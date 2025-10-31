@@ -8,3 +8,5 @@ const firebaseConfig = {
     appId: "1:230740904127:web:e141fcb05124256a6f1e0a",
     measurementId: "G-FRX904B3LQ"
   };
+firebase.initializeApp(firebaseConfig);
+const contactDB = firebase.database().ref('contact')

@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Owen Falcao — Professional Portfolio</title>
+  <meta name="description" content="Professional portfolio of Owen Falcao, Computer Engineering student showcasing projects, experience, skills, and career goals.">
+  <meta name="author" content="Owen Falcao">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    .active-nav { border-bottom-width: 3px; border-color: #2563eb; }
+    .fade-in { opacity: 0; transform: translateY(10px); transition: opacity 500ms ease, transform 500ms ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .modal-backdrop { background: rgba(0,0,0,0.6); }
+
+    .hover-underline { position: relative; transition: color 0.3s ease; }
+    .hover-underline::after { content: ''; position: absolute; left: 0; bottom: -2px; width: 0; height: 2px; background: #2563eb; transition: width 0.3s ease; }
+    .hover-underline:hover::after { width: 100%; }
+
+    .hover-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .hover-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); }
+
+    .hover-btn { transition: all 0.3s ease; }
+    .hover-btn:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 4px 10px rgba(37,99,235,0.3); }
+
+    .hover-img { transition: transform 0.4s ease, filter 0.4s ease; }
+    .hover-img:hover { transform: scale(1.05); filter: brightness(1.05); }
+  </style>
+</head>
+<body class="bg-gray-50 text-slate-800 leading-relaxed font-sans">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <nav class="flex items-center justify-between h-16">
+        <a href="#home" class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-gray-600 rounded-md flex items-center justify-center text-white font-bold">OF</div>
+          <div class="hidden sm:block">
+            <div class="text-lg font-semibold text-gray-800">Owen Falcao</div>
+            <div class="text-xs text-gray-500">Computer Engineer | Web & Embedded Systems</div>
+          </div>
+        </a>
+
+        <ul id="nav" class="hidden md:flex gap-6 items-center text-sm">
+          <li><a class="nav-link hover-underline py-2 px-1 hover:text-blue-600" href="#home">Home</a></li>
+          <li><a class="nav-link hover-underline py-2 px-1 hover:text-blue-600" href="#about">About</a></li>
+          <li><a class="nav-link hover-underline py-2 px-1 hover:text-blue-600" href="#projects">Projects</a></li>
+          <li><a class="nav-link hover-underline py-2 px-1 hover:text-blue-600" href="#gallery">Gallery</a></li>
+          <li><a class="nav-link hover-underline py-2 px-1 hover:text-blue-600" href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="md:hidden">
+          <button id="menuBtn" aria-label="Toggle menu" class="p-2 rounded-md hover:bg-gray-100">
+            <svg id="menuIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <div id="mobileMenu" class="hidden md:hidden border-t bg-white">
+      <div class="px-4 pb-4 flex flex-col gap-2">
+        <a class="py-2" href="#home">Home</a>
+        <a class="py-2" href="#about">About</a>
+        <a class="py-2" href="#projects">Projects</a>
+        <a class="py-2" href="#gallery">Gallery</a>
+        <a class="py-2" href="#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+
+    <!-- HOME -->
+    <section id="home" class="min-h-[60vh] flex flex-col md:flex-row items-center gap-10">
+      <div class="w-full md:w-1/2">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight">Hi, I'm <span class="text-blue-600">Owen</span> — Computer Engineering Student</h1>
+        <p class="mt-4 text-gray-700">A detail-oriented engineer passionate about designing efficient systems and developing web-based solutions that bridge technology and usability. I’m driven by curiosity and committed to continuous learning in software and embedded systems development.</p>
+
+        <div class="mt-6 flex gap-3">
+          <a href="#contact" class="hover-btn inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-md shadow">Contact Me</a>
+          <a href="#projects" class="hover-btn inline-flex items-center gap-2 border border-gray-300 px-4 py-2 rounded-md">View Projects</a>
+        </div>
+      </div>
+
+      <div class="hidden md:block md:w-1/2">
+        <div class="aspect-square bg-gradient-to-br from-blue-100 to-gray-100 rounded-lg p-4 flex items-center justify-center shadow-sm">
+          <img alt="Profile" src="OwenPhoto.jpeg" class="hover-img rounded-lg shadow-md object-cover w-full h-full" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="mt-20">
+      <h2 class="text-3xl font-semibold text-gray-900">About Me</h2>
+      <div class="mt-6 grid md:grid-cols-3 gap-6">
+        <div class="md:col-span-2 hover-card bg-white p-6 rounded-lg">
+          <p class="text-gray-700">I am currently pursuing my degree in Computer Engineering with a focus on web development, embedded systems, and problem-solving through technology. My academic and project experiences have taught me the importance of structure, precision, and teamwork in delivering robust engineering solutions.</p>
+          <p class="mt-3 text-gray-700">I enjoy taking up challenges that integrate hardware and software, and I’m particularly interested in automation, IoT, and scalable system design. I believe that great engineering combines logic with creativity, and that’s the approach I bring to every project I work on.</p>
+
+          <h3 class="mt-6 font-semibold text-gray-800">Technical Skills</h3>
+          <div class="mt-3 grid grid-cols-2 gap-3 text-sm text-gray-700">
+            <div>• HTML5 / CSS3</div>
+            <div>• JavaScript (ES6+)</div>
+            <div>• Python (Basics)</div>
+            <div>• Embedded C / Arduino</div>
+            <div>• Git & GitHub</div>
+            <div>• Tailwind CSS</div>
+            <div>• Responsive Design</div>
+            <div>• Systems Design Principles</div>
+          </div>
+        </div>
+
+        <div class="hover-card p-6 rounded-lg bg-white shadow-sm">
+          <h4 class="font-semibold text-gray-800">Education</h4>
+          <p class="text-sm text-gray-600 mt-2">Fr. Conceicao Rodrigues College of Engineering<br>Department of Computer Engineering</p>
+
+          <h4 class="font-semibold mt-4 text-gray-800">Achievements</h4>
+          <ul class="text-sm mt-2 text-gray-700">
+            <li>• Contributed to web-based automation projects</li>
+            <li>• Designed IoT prototypes for academic exhibitions</li>
+            <li>• Active member of college tech community</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="mt-20">
+      <h2 class="text-3xl font-semibold text-gray-900">Projects & Experience</h2>
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <div class="hover-card bg-white p-6 rounded-lg shadow-sm">
+          <h3 class="text-lg font-semibold text-blue-600">Smart Home Automation</h3>
+          <p class="mt-2 text-sm text-gray-700">Developed an IoT-based smart home system using Arduino and sensor modules to automate lighting and environmental monitoring.</p>
+          <p class="mt-2 text-xs text-gray-500">Technologies: C, Arduino IDE, MQTT</p>
+        </div>
+
+        <div class="hover-card bg-white p-6 rounded-lg shadow-sm">
+          <h3 class="text-lg font-semibold text-blue-600">Portfolio Web Application</h3>
+          <p class="mt-2 text-sm text-gray-700">Built a responsive personal portfolio website using HTML, Tailwind CSS, and JavaScript, focusing on accessibility and smooth UI transitions.</p>
+          <p class="mt-2 text-xs text-gray-500">Technologies: HTML, Tailwind, JavaScript</p>
+        </div>
+
+        <div class="hover-card bg-white p-6 rounded-lg shadow-sm">
+          <h3 class="text-lg font-semibold text-blue-600">Data Logger System</h3>
+          <p class="mt-2 text-sm text-gray-700">Created a data logging system that records sensor data to an SD card for offline analysis, improving environmental monitoring workflows.</p>
+          <p class="mt-2 text-xs text-gray-500">Technologies: Embedded C, Microcontrollers</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="mt-20">
+      <h2 class="text-3xl font-semibold text-gray-900">Project Gallery</h2>
+      <p class="mt-2 text-sm text-gray-600">A glimpse of my project visuals and technical snapshots.</p>
+
+      <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-4">
+        <div class="text-center">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=600&auto=format&fit=crop" class="hover-img rounded-md shadow-sm w-full h-40 object-cover" alt="Web Dashboard"/>
+          <p class="mt-2 text-xs text-gray-600">Web Dashboard Interface</p>
+        </div>
+        <div class="text-center">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=600&auto=format&fit=crop" class="hover-img rounded-md shadow-sm w-full h-40 object-cover" alt="IoT Prototype"/>
+          <p class="mt-2 text-xs text-gray-600">IoT Prototype System</p>
+        </div>
+        <div class="text-center">
+          <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=600&auto=format&fit=crop" class="hover-img rounded-md shadow-sm w-full h-40 object-cover" alt="Data Visualization"/>
+          <p class="mt-2 text-xs text-gray-600">Data Visualization Tools</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAREER GOALS -->
+    <section id="goals" class="mt-20">
+      <h2 class="text-3xl font-semibold text-gray-900">Career Goals & Interests</h2>
+      <p class="mt-4 text-gray-700">My primary objective is to contribute to innovative projects that enhance connectivity and automation. I am eager to deepen my expertise in embedded systems, AI-driven solutions, and cybersecurity — areas that shape the future of intelligent computing. I aim to collaborate with interdisciplinary teams to create meaningful, scalable, and efficient technology solutions.</p>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="mt-20">
+      <h2 class="text-3xl font-semibold text-gray-900">Testimonials</h2>
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <div class="hover-card bg-white p-6 rounded-lg shadow-sm">
+          <p class="text-gray-700 italic">“Owen demonstrates strong analytical thinking and technical adaptability. His ability to work independently and in teams makes him a valuable asset.”</p>
+          <p class="mt-3 text-sm text-gray-600">— Professor, Department of Computer Engineering</p>
+        </div>
+        <div class="hover-card bg-white p-6 rounded-lg shadow-sm">
+          <p class="text-gray-700 italic">“A creative problem solver who brings precision and practicality to his work. His code is structured, clean, and efficient.”</p>
+          <p class="mt-3 text-sm text-gray-600">— Team Lead, Academic Project</p>
+        </div>
+        <div class="hover-card bg-white p-6 rounded-lg shadow-sm">
+          <p class="text-gray-700 italic">“Owen consistently delivers high-quality work ahead of deadlines and shows great enthusiasm for learning emerging technologies.”</p>
+          <p class="mt-3 text-sm text-gray-600">— Project Mentor</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="mt-20 mb-12">
+      <h2 class="text-3xl font-semibold text-gray-900">Contact Me</h2>
+      <form id="contactForm" class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 bg-white p-6 rounded-lg shadow-sm hover-card" novalidate>
+        <div>
+          <label class="text-sm font-medium">Name</label>
+          <input id="name" name="name" type="text" required class="mt-1 block w-full border border-gray-200 rounded-md p-2" placeholder="Your name">
+          <p id="nameErr" class="text-red-600 text-xs mt-1 hidden">Please enter your name.</p>
+        </div>
+        <div>
+          <label class="text-sm font-medium">Email</label>
+          <input id="email" name="email" type="email" required class="mt-1 block w-full border border-gray-200 rounded-md p-2" placeholder="you@example.com">
+          <p id="emailErr" class="text-red-600 text-xs mt-1 hidden">Enter a valid email address.</p>
+        </div>
+        <div class="md:col-span-2">
+          <label class="text-sm font-medium">Message</label>
+          <textarea id="message" name="message" rows="5" required class="mt-1 block w-full border border-gray-200 rounded-md p-2" placeholder="Tell me about your idea or project"></textarea>
+          <p id="msgErr" class="text-red-600 text-xs mt-1 hidden">Please enter a message (min 10 characters).</p>
+        </div>
+        <div class="md:col-span-2 flex items-center gap-3">
+          <button type="submit" class="hover-btn bg-blue-600 text-white px-4 py-2 rounded-md">Send message</button>
+          <a href="#" class="hover-btn border border-blue-600 text-blue-600 px-4 py-2 rounded-md">Download Resume</a>
+          <div id="formMsg" class="text-sm text-gray-600"></div>
+        </div>
+      </form>
+    </section>
+
+    <footer class="mt-12 border-t pt-6 text-sm text-gray-600">
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div>© <span id="year"></span> Owen Falcao —

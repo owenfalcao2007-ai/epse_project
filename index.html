@@ -12,11 +12,6 @@
   </script>
   <style>
     html { scroll-behavior: smooth; }
-    .active-nav { border-bottom-width: 3px; border-color: #2563eb; }
-    .fade-in { opacity: 0; transform: translateY(10px); transition: opacity 500ms ease, transform 500ms ease; }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-    .modal-backdrop { background: rgba(0,0,0,0.6); }
-
     .hover-underline { position: relative; transition: color 0.24s ease; }
     .hover-underline::after { content: ''; position: absolute; left: 0; bottom: -2px; width: 0; height: 2px; background: #2563eb; transition: width 0.28s ease; }
     .hover-underline:hover::after { width: 100%; }
@@ -33,21 +28,9 @@
     .icon-transition { transition: transform 0.36s ease, opacity 0.28s ease; }
     .rotate { transform: rotate(180deg); opacity: 0; }
 
-    /* accessibility focus ring */
-    :focus { outline: 2px solid transparent; outline-offset: 2px; }
-    .focus-ring:focus { box-shadow: 0 0 0 3px rgba(37,99,235,0.15); }
-
-    /* Dark mode input fix */
-    input, textarea {
-      color: #111827;
-    }
-    .dark input, .dark textarea {
-      color: #f9fafb;
-      background-color: #1f2937;
-    }
-    .dark input::placeholder, .dark textarea::placeholder {
-      color: #9ca3af;
-    }
+    input, textarea { color: #111827; }
+    .dark input, .dark textarea { color: #f9fafb; background-color: #1f2937; }
+    .dark input::placeholder, .dark textarea::placeholder { color: #9ca3af; }
   </style>
 </head>
 <body class="bg-gray-50 text-slate-800 leading-relaxed font-sans dark:bg-gray-900 dark:text-gray-200">
@@ -65,345 +48,103 @@
         </a>
 
         <ul id="nav" class="hidden md:flex gap-6 items-center text-sm">
-          <li><a class="nav-link hover-underline py-2 px-1 hover:text-blue-600 dark:hover:text-blue-400" href="#home">Home</a></li>
-          <li><a class="nav-link hover-underline py-2 px-1 hover:text-blue-600 dark:hover:text-blue-400" href="#about">About</a></li>
-          <li><a class="nav-link hover-underline py-2 px-1 hover:text-blue-600 dark:hover:text-blue-400" href="#projects">Projects</a></li>
-          <li><a class="nav-link hover-underline py-2 px-1 hover:text-blue-600 dark:hover:text-blue-400" href="#gallery">Gallery</a></li>
-          <li><a class="nav-link hover-underline py-2 px-1 hover:text-blue-600 dark:hover:text-blue-400" href="#contact">Contact</a></li>
+          <li><a class="hover-underline" href="#home">Home</a></li>
+          <li><a class="hover-underline" href="#about">About</a></li>
+          <li><a class="hover-underline" href="#projects">Projects</a></li>
+          <li><a class="hover-underline" href="#gallery">Gallery</a></li>
+          <li><a class="hover-underline" href="#contact">Contact</a></li>
         </ul>
 
-        <div class="flex items-center gap-3">
-          <!-- Theme Toggle (outlined blue-gray) -->
-          <button id="themeToggle" class="p-2 rounded-md border border-blue-500/30 hover:bg-blue-50 dark:hover:bg-gray-700 focus-ring" aria-label="Toggle Dark Mode">
-            <!-- Sun Icon (visible in light mode) -->
-            <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500 dark:hidden icon-transition" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="4" />
-              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-            </svg>
-            <!-- Moon Icon (visible in dark mode) -->
-            <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 hidden dark:block icon-transition" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-            </svg>
-          </button>
-
-          <!-- Mobile menu button -->
-          <button id="menuBtn" aria-label="Toggle menu" class="md:hidden p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800 dark:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-        </div>
+        <!-- Theme Toggle -->
+        <button id="themeToggle" class="p-2 rounded-md border border-blue-500/30 hover:bg-blue-50 dark:hover:bg-gray-700">
+          <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500 dark:hidden icon-transition" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+          </svg>
+          <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 hidden dark:block icon-transition" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+          </svg>
+        </button>
       </nav>
-    </div>
-
-    <!-- Mobile menu -->
-    <div id="mobileMenu" class="hidden md:hidden border-t bg-white dark:bg-gray-800">
-      <div class="px-4 pb-4 flex flex-col gap-2">
-        <a class="py-2" href="#home">Home</a>
-        <a class="py-2" href="#about">About</a>
-        <a class="py-2" href="#projects">Projects</a>
-        <a class="py-2" href="#gallery">Gallery</a>
-        <a class="py-2" href="#contact">Contact</a>
-      </div>
     </div>
   </header>
 
-  <!-- MAIN CONTAINER -->
+  <!-- MAIN -->
   <main class="max-w-6xl mx-auto px-4 sm:px-6 py-12">
-
-    <!-- HERO / HOME -->
     <section id="home" class="min-h-[60vh] flex flex-col md:flex-row items-center gap-10">
       <div class="w-full md:w-1/2">
-        <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-gray-100 leading-tight">Hi, I'm <span class="text-blue-600 dark:text-blue-400">Owen</span> — Computer Engineering Student</h1>
-        <p class="mt-4 text-gray-700 dark:text-gray-300">A detail-oriented engineer passionate about designing efficient systems and developing web-based solutions that bridge technology and usability. I combine rigorous systems thinking with clean UI design to deliver reliable, maintainable solutions.</p>
-        <div class="mt-6 flex gap-3">
-          <a href="#contact" class="hover-btn inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-md shadow">Contact Me</a>
-          <a href="#projects" class="hover-btn inline-flex items-center gap-2 border border-gray-300 dark:border-gray-600 px-4 py-2 rounded-md">View Projects</a>
-        </div>
-
-        <ul class="mt-6 grid grid-cols-2 gap-3 text-sm text-gray-700 dark:text-gray-300">
-          <li>📚 Computer Engineering student</li>
-          <li>🛠️ Web & Embedded Systems</li>
-          <li>📈 Focus: Robust, maintainable solutions</li>
-          <li>🤝 Teamwork • Code quality • Documentation</li>
-        </ul>
+        <h1 class="text-4xl sm:text-5xl font-extrabold">Hi, I'm <span class="text-blue-600 dark:text-blue-400">Owen</span></h1>
+        <p class="mt-4 text-gray-700 dark:text-gray-300">A Computer Engineering student passionate about blending hardware, software, and UI design to create modern, maintainable systems.</p>
       </div>
-
       <div class="hidden md:block md:w-1/2">
-        <div class="aspect-square bg-gradient-to-br from-blue-100 to-gray-100 dark:from-gray-700 dark:to-gray-800 rounded-lg p-4 flex items-center justify-center shadow-sm">
-          <img alt="Profile" src="owenphoto.jpeg" class="hover-img rounded-lg shadow-md object-cover w-full h-full" />
+        <div class="aspect-square bg-gradient-to-br from-blue-100 to-gray-100 dark:from-gray-700 dark:to-gray-800 rounded-lg p-4">
+          <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=800" class="rounded-lg shadow-md object-cover w-full h-full" alt="Profile">
         </div>
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="mt-20">
-      <h2 class="text-3xl font-semibold text-gray-900 dark:text-gray-100">About Me</h2>
-      <div class="mt-6 grid md:grid-cols-3 gap-6">
-        <div class="md:col-span-2 hover-card bg-white dark:bg-gray-800 p-6 rounded-lg">
-          <p class="text-gray-700 dark:text-gray-300">I am dedicated to building solutions at the intersection of hardware and software. My work so far has included responsive web applications, microcontroller-based prototypes, and data-logging tools for offline analysis. I emphasize clear documentation, reproducible builds, and thoughtful system architecture.</p>
-          <p class="mt-3 text-gray-700 dark:text-gray-300">I seek roles and projects where I can contribute to end-to-end development: from low-level firmware to user-facing interfaces. I enjoy working in collaborative environments where design, testing, and iteration are prioritized.</p>
-
-          <h3 class="mt-6 font-semibold text-gray-800 dark:text-gray-100">Technical Skills</h3>
-          <div class="mt-3 grid grid-cols-2 gap-3 text-sm text-gray-700 dark:text-gray-300">
-            <div>• HTML5 / CSS3</div>
-            <div>• JavaScript (ES6+)</div>
-            <div>• Python (Basics)</div>
-            <div>• Embedded C / Arduino</div>
-            <div>• Git & GitHub</div>
-            <div>• Tailwind CSS</div>
-            <div>• Responsive Design</div>
-            <div>• Systems Design Principles</div>
-          </div>
-        </div>
-
-        <div class="hover-card p-6 rounded-lg bg-white dark:bg-gray-800 shadow-sm">
-          <h4 class="font-semibold text-gray-800 dark:text-gray-100">Education</h4>
-          <p class="text-sm text-gray-600 dark:text-gray-300 mt-2">Fr. Conceicao Rodrigues College of Engineering<br>Department of Computer Engineering</p>
-
-          <h4 class="font-semibold mt-4 text-gray-800 dark:text-gray-100">Achievements</h4>
-          <ul class="text-sm mt-2 text-gray-700 dark:text-gray-300">
-            <li>• Contributed to web-based automation projects</li>
-            <li>• Designed IoT prototypes for academic exhibitions</li>
-            <li>• Active member of college tech community</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
     <section id="projects" class="mt-20">
-      <h2 class="text-3xl font-semibold text-gray-900 dark:text-gray-100">Projects & Experience</h2>
+      <h2 class="text-3xl font-semibold">Projects & Experience</h2>
       <div class="mt-8 grid md:grid-cols-3 gap-6">
         <article class="hover-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
           <h3 class="text-lg font-semibold text-blue-600 dark:text-blue-400">Smart Home Automation</h3>
-          <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">Implemented an Arduino-based automation system to control lighting and monitor environmental data. The system used MQTT for lightweight messaging and prioritized reliability in constrained network conditions.</p>
-          <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">Technologies: Embedded C, Arduino, MQTT</p>
+          <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">Created a low-cost automation system for smart homes using Arduino and MQTT for efficient control and monitoring.</p>
         </article>
-
         <article class="hover-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
           <h3 class="text-lg font-semibold text-blue-600 dark:text-blue-400">Portfolio Web Application</h3>
-          <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">Developed a responsive personal portfolio with careful attention to accessibility, performance, and maintainable CSS using Tailwind and component-based structure.</p>
-          <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">Technologies: HTML, Tailwind, JavaScript</p>
+          <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">Built this portfolio using HTML, Tailwind, and JavaScript for a fully responsive, professional presentation.</p>
         </article>
-
         <article class="hover-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
           <h3 class="text-lg font-semibold text-blue-600 dark:text-blue-400">Data Logger System</h3>
-          <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">Built a robust data logger for environmental sensors that stores readings to an SD card for later analysis — useful for offline field deployments.</p>
-          <p class="mt-2 text-xs text-gray-500 dark:text-gray-400">Technologies: Embedded C, Microcontrollers, SD storage</p>
+          <p class="mt-2 text-sm text-gray-700 dark:text-gray-300">Developed a reliable data logging tool for sensor networks using embedded C and SD card storage.</p>
         </article>
       </div>
     </section>
 
-    <!-- GALLERY -->
     <section id="gallery" class="mt-20">
-      <h2 class="text-3xl font-semibold text-gray-900 dark:text-gray-100">Project Gallery</h2>
-      <p class="mt-2 text-sm text-gray-600 dark:text-gray-300">A glimpse of project visuals and technical snapshots.</p>
-
-      <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 gap-4">
-        <button class="gallery-item text-left focus:outline-none" data-src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop">
-          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=600&auto=format&fit=crop" class="hover-img rounded-md shadow-sm w-full h-40 object-cover" alt="Web Dashboard"/>
-          <p class="mt-2 text-xs text-gray-600 dark:text-gray-300">Web Dashboard Interface</p>
-        </button>
-
-        <button class="gallery-item text-left focus:outline-none" data-src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop">
-          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=600&auto=format&fit=crop" class="hover-img rounded-md shadow-sm w-full h-40 object-cover" alt="IoT Prototype"/>
-          <p class="mt-2 text-xs text-gray-600 dark:text-gray-300">IoT Prototype System</p>
-        </button>
-
-        <button class="gallery-item text-left focus:outline-none" data-src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1200&auto=format&fit=crop">
-          <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=600&auto=format&fit=crop" class="hover-img rounded-md shadow-sm w-full h-40 object-cover" alt="Data Visualization"/>
-          <p class="mt-2 text-xs text-gray-600 dark:text-gray-300">Data Visualization Tools</p>
-        </button>
-
-        <button class="gallery-item text-left focus:outline-none" data-src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop">
-          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=600&auto=format&fit=crop" class="hover-img rounded-md shadow-sm w-full h-40 object-cover" alt="Prototype Assembly"/>
-          <p class="mt-2 text-xs text-gray-600 dark:text-gray-300">Prototype Assembly</p>
-        </button>
-
-        <button class="gallery-item text-left focus:outline-none" data-src="https://images.unsplash.com/photo-1581092795360-6f0b5f59d8d6?q=80&w=1200&auto=format&fit=crop">
-          <img src="https://images.unsplash.com/photo-1581092795360-6f0b5f59d8d6?q=80&w=600&auto=format&fit=crop" class="hover-img rounded-md shadow-sm w-full h-40 object-cover" alt="Hardware Close-up"/>
-          <p class="mt-2 text-xs text-gray-600 dark:text-gray-300">Hardware Close-up</p>
-        </button>
-
-        <button class="gallery-item text-left focus:outline-none" data-src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1200&auto=format&fit=crop">
-          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=600&auto=format&fit=crop" class="hover-img rounded-md shadow-sm w-full h-40 object-cover" alt="Lab Setup"/>
-          <p class="mt-2 text-xs text-gray-600 dark:text-gray-300">Lab Setup</p>
-        </button>
-      </div>
-
-      <!-- Image modal -->
-      <div id="imgModal" class="fixed inset-0 hidden items-center justify-center modal-backdrop p-4">
-        <div class="max-w-4xl w-full">
-          <div class="relative bg-white dark:bg-gray-800 rounded-lg p-4 shadow-lg">
-            <button id="modalClose" aria-label="Close" class="absolute right-3 top-3 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700">&times;</button>
-            <img id="modalImg" src="" alt="Expanded" class="w-full rounded-md object-contain max-h-[70vh]" />
-          </div>
-        </div>
+      <h2 class="text-3xl font-semibold">Project Gallery</h2>
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=600" alt="Dashboard" class="hover-img rounded-md shadow-sm w-full h-48 object-cover">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=600" alt="Prototype" class="hover-img rounded-md shadow-sm w-full h-48 object-cover">
+        <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=600" alt="Visualization" class="hover-img rounded-md shadow-sm w-full h-48 object-cover">
       </div>
     </section>
 
-    <!-- CAREER GOALS -->
-    <section id="goals" class="mt-20">
-      <h2 class="text-3xl font-semibold text-gray-900 dark:text-gray-100">Career Goals & Interests</h2>
-      <p class="mt-4 text-gray-700 dark:text-gray-300">I aim to deepen my expertise in embedded systems, explore AI-powered edge solutions, and strengthen my knowledge in cybersecurity best practices. I’m especially interested in projects that combine system-level engineering with usable human interfaces.</p>
-    </section>
-
-    <!-- TESTIMONIALS -->
-    <section id="testimonials" class="mt-20">
-      <h2 class="text-3xl font-semibold text-gray-900 dark:text-gray-100">Testimonials</h2>
-      <div class="mt-8 grid md:grid-cols-3 gap-6">
-        <blockquote class="hover-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
-          <p class="text-gray-700 dark:text-gray-300 italic">“Owen demonstrates strong analytical thinking and technical adaptability. His ability to work both independently and collaboratively is a major asset.”</p>
-          <cite class="mt-3 block text-sm text-gray-600 dark:text-gray-400">— Professor, Department of Computer Engineering</cite>
-        </blockquote>
-
-        <blockquote class="hover-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
-          <p class="text-gray-700 dark:text-gray-300 italic">“A methodical problem solver who writes readable, maintainable code and consistently delivers high-quality results.”</p>
-          <cite class="mt-3 block text-sm text-gray-600 dark:text-gray-400">— Team Lead, Academic Project</cite>
-        </blockquote>
-
-        <blockquote class="hover-card bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
-          <p class="text-gray-700 dark:text-gray-300 italic">“Enthusiastic, reliable, and quick to learn new tools — excellent in prototyping and testing.”</p>
-          <cite class="mt-3 block text-sm text-gray-600 dark:text-gray-400">— Project Mentor</cite>
-        </blockquote>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
     <section id="contact" class="mt-20 mb-12">
-      <h2 class="text-3xl font-semibold text-gray-900 dark:text-gray-100">Contact Me</h2>
-      <form id="contactForm" class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm hover-card" novalidate>
-        <div>
-          <label class="text-sm font-medium">Name</label>
-          <input id="name" name="name" type="text" required class="mt-1 block w-full border border-gray-200 dark:border-gray-700 rounded-md p-2" placeholder="Your name">
-          <p id="nameErr" class="text-red-600 text-xs mt-1 hidden">Please enter your name.</p>
-        </div>
-        <div>
-          <label class="text-sm font-medium">Email</label>
-          <input id="email" name="email" type="email" required class="mt-1 block w-full border border-gray-200 dark:border-gray-700 rounded-md p-2" placeholder="you@example.com">
-          <p id="emailErr" class="text-red-600 text-xs mt-1 hidden">Enter a valid email address.</p>
-        </div>
-        <div class="md:col-span-2">
-          <label class="text-sm font-medium">Message</label>
-          <textarea id="message" name="message" rows="5" required class="mt-1 block w-full border border-gray-200 dark:border-gray-700 rounded-md p-2" placeholder="Tell me about your idea or project"></textarea>
-          <p id="msgErr" class="text-red-600 text-xs mt-1 hidden">Please enter a message (min 10 characters).</p>
-        </div>
-        <div class="md:col-span-2 flex items-center gap-3">
-          <button type="submit" class="hover-btn bg-blue-600 text-white px-4 py-2 rounded-md">Send message</button>
-          <a id="resumeLink" href="#" class="hover-btn border border-blue-600 text-blue-600 px-4 py-2 rounded-md">Download Resume</a>
-          <div id="formMsg" class="text-sm text-gray-600 dark:text-gray-300"></div>
-        </div>
+      <h2 class="text-3xl font-semibold">Contact Me</h2>
+      <form id="contactForm" class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm hover-card">
+        <input id="name" name="name" type="text" placeholder="Your name" class="p-2 rounded-md border border-gray-300 dark:border-gray-700">
+        <input id="email" name="email" type="email" placeholder="you@example.com" class="p-2 rounded-md border border-gray-300 dark:border-gray-700">
+        <textarea id="message" name="message" rows="4" placeholder="Your message" class="p-2 rounded-md border border-gray-300 dark:border-gray-700 md:col-span-2"></textarea>
+        <button type="submit" class="hover-btn bg-blue-600 text-white px-4 py-2 rounded-md md:col-span-2">Send Message</button>
       </form>
     </section>
-
   </main>
 
-  <!-- FOOTER -->
-  <footer class="bg-white dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700 mt-12">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-gray-600 dark:text-gray-300">
-      <div>© 2025 Owen Falcao. All rights reserved.</div>
-      <div class="flex gap-4">
-        <a href="#" aria-label="GitHub" class="hover-underline">GitHub</a>
-        <a href="#" aria-label="LinkedIn" class="hover-underline">LinkedIn</a>
-      </div>
-    </div>
+  <footer class="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-6 text-center text-sm text-gray-600 dark:text-gray-300">
+    © 2025 Owen Falcao. All rights reserved.
   </footer>
 
-  <!-- SCRIPTS -->
   <script>
-    // Utilities
-    const $all = (s, root=document) => Array.from(root.querySelectorAll(s));
-
-    // Theme toggle logic with animation and persistence
-    const themeToggle = document.getElementById('themeToggle');
     const html = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
     const sunIcon = document.getElementById('sunIcon');
     const moonIcon = document.getElementById('moonIcon');
 
-    // Initialize theme
     if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       html.classList.add('dark');
-    } else {
-      html.classList.remove('dark');
     }
 
-    // Toggle handler with short animation
     themeToggle.addEventListener('click', () => {
       sunIcon.classList.add('rotate');
       moonIcon.classList.add('rotate');
       setTimeout(() => {
         html.classList.toggle('dark');
         localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light';
-        // remove animation classes after state change
         sunIcon.classList.remove('rotate');
         moonIcon.classList.remove('rotate');
       }, 180);
     });
-
-    // Mobile menu
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    menuBtn && menuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
-
-    // Active nav highlighting
-    const sections = $all('main section[id]');
-    const navLinks = $all('.nav-link');
-    function onScroll() {
-      const scrollPos = window.scrollY + 140;
-      let current = sections[0]?.id || '';
-      for (let sec of sections) if (sec.offsetTop <= scrollPos) current = sec.id;
-      navLinks.forEach(a => a.classList.toggle('active-nav', a.getAttribute('href') === '#'+current));
-    }
-    window.addEventListener('scroll', onScroll);
-    window.addEventListener('load', onScroll);
-
-    // Gallery modal
-    const galleryBtns = $all('.gallery-item');
-    const imgModal = document.getElementById('imgModal');
-    const modalImg = document.getElementById('modalImg');
-    const modalClose = document.getElementById('modalClose');
-    galleryBtns.forEach(btn => btn.addEventListener('click', () => {
-      modalImg.src = btn.dataset.src;
-      imgModal.classList.remove('hidden');
-      imgModal.classList.add('flex');
-      document.body.style.overflow = 'hidden';
-    }));
-    function closeModal() { imgModal.classList.add('hidden'); imgModal.classList.remove('flex'); modalImg.src=''; document.body.style.overflow=''; }
-    modalClose && modalClose.addEventListener('click', closeModal);
-    imgModal && imgModal.addEventListener('click', e => { if (e.target === imgModal) closeModal(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-    // Contact form validation (front-end only)
-    const contactForm = document.getElementById('contactForm');
-    const nameField = document.getElementById('name');
-    const emailField = document.getElementById('email');
-    const msgField = document.getElementById('message');
-    const nameErr = document.getElementById('nameErr');
-    const emailErr = document.getElementById('emailErr');
-    const msgErr = document.getElementById('msgErr');
-    const formMsg = document.getElementById('formMsg');
-
-    function validateEmail(email) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
-
-    contactForm && contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      let ok = true; formMsg.textContent = '';
-      if (!nameField.value.trim()) { nameErr.classList.remove('hidden'); ok = false; } else { nameErr.classList.add('hidden'); }
-      if (!validateEmail(emailField.value.trim())) { emailErr.classList.remove('hidden'); ok = false; } else { emailErr.classList.add('hidden'); }
-      if (msgField.value.trim().length < 10) { msgErr.classList.remove('hidden'); ok = false; } else { msgErr.classList.add('hidden'); }
-      if (!ok) return;
-      formMsg.textContent = 'Thanks — message validated (demo).';
-      contactForm.reset();
-      setTimeout(()=> formMsg.textContent = '', 4500);
-    });
-
-    // Set current year in footer
-    document.addEventListener('DOMContentLoaded', () => {
-      const y = new Date().getFullYear();
-      document.querySelectorAll('#year').forEach(el => el.textContent = y);
-    });
   </script>
- 
 </body>
 </html>

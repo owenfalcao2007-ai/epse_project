@@ -36,6 +36,18 @@
     /* accessibility focus ring */
     :focus { outline: 2px solid transparent; outline-offset: 2px; }
     .focus-ring:focus { box-shadow: 0 0 0 3px rgba(37,99,235,0.15); }
+
+    /* Dark mode input fix */
+    input, textarea {
+      color: #111827;
+    }
+    .dark input, .dark textarea {
+      color: #f9fafb;
+      background-color: #1f2937;
+    }
+    .dark input::placeholder, .dark textarea::placeholder {
+      color: #9ca3af;
+    }
   </style>
 </head>
 <body class="bg-gray-50 text-slate-800 leading-relaxed font-sans dark:bg-gray-900 dark:text-gray-200">
